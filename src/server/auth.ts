@@ -4,6 +4,7 @@ import {
 	type NextAuthOptions,
 } from "next-auth"
 import DiscordProvider from "next-auth/providers/discord"
+import Credentials from "next-auth/providers/credentials"
 
 import { env } from "@/env"
 
@@ -47,6 +48,25 @@ export const authOptions: NextAuthOptions = {
 		DiscordProvider({
 			clientId: env.DISCORD_CLIENT_ID,
 			clientSecret: env.DISCORD_CLIENT_SECRET,
+		}),
+		// This is a custom provider for a secret code. You can remove this
+		// if you don't need it. This bypasses the Discord OAuth login and
+		// just asks for a secret code. This can be useful for sharing with
+		// people you trust who don't have Discord.
+		Credentials({
+			name: "credentials",
+			credentials: {
+				password: {
+					label: "Password",
+					type: "password",
+				},
+			},
+			async authorize(credentials) {
+				if (credentials?.password === env.SECRET_CODE) {
+					return { id: "1", name: "Anonymous" }
+				}
+				return null
+			},
 		}),
 		/**
 		 * ...add more providers here.
