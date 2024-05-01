@@ -5,6 +5,17 @@
 await import("./src/env.js")
 
 /** @type {import("next").NextConfig} */
-const config = {}
+const config = {
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "**.livepeer.cloud",
+				port: "",
+				pathname: "/stream/**",
+			},
+		],
+	},
+}
 
 export default config
