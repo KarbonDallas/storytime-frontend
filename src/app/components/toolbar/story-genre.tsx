@@ -25,7 +25,7 @@ export function StoryGenreButton(props: StoryButtonGenreProps) {
 		<ToggleItem
 			className=" inline-flex h-[32px] flex-shrink-0 flex-grow-0 basis-auto items-center justify-center rounded bg-white px-[5px] text-[13px] leading-none text-mauve11 outline-none first:ml-0 hover:bg-violet3 hover:text-violet11 focus:relative focus:shadow-[0_0_0_2px] focus:shadow-violet7 data-[state=on]:bg-violet5 data-[state=on]:text-violet11"
 			value={id}
-			aria-label={storyGenres[id as keyof typeof storyGenres]}
+			aria-label={genres[id as keyof typeof genres]}
 			{...props}
 		>
 			{id === "magic" && <WandSparkles />}

@@ -9,7 +9,7 @@ const exo = Exo({
 })
 
 export const metadata = {
-	title: "Storytime With Akasha",
+	title: "Storytime with Akasha",
 	description: "An interactive transmedia storytelling experience",
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
