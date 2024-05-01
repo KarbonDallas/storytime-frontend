@@ -10,23 +10,14 @@ import {
 } from "lucide-react"
 import type { PropsWithChildren, MouseEventHandler } from "react"
 import { ToggleItem } from "@radix-ui/react-toolbar"
-
+import { storyGenres } from "@/app/reader/types"
 export type StoryButtonGenreProps = {
 	id: string
 	disabled?: boolean
 	onClick: MouseEventHandler
 } & PropsWithChildren
 
-export const storyGenres = {
-	magic: "Magical Wizardry",
-	scifi: "Science Fiction",
-	swords: "Sword & Sorcery",
-	romance: "Romance Novel",
-	drama: "Classic Drama",
-	apocalypse: "Apocalypse Now",
-	hollywood: "Hollywood Action",
-	singularity: "The Singularity",
-}
+const genres = storyGenres
 
 export function StoryGenreButton(props: StoryButtonGenreProps) {
 	const { id } = props

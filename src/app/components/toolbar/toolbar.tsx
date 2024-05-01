@@ -4,8 +4,8 @@ import { type PropsWithChildren, useState } from "react"
 import { Root, ToggleGroup, Separator, Link } from "@radix-ui/react-toolbar"
 import { Button } from "@radix-ui/themes"
 
-import { StoryGenreButton, storyGenres } from "./story-genre"
-
+import { StoryGenreButton } from "./story-genre"
+import { storyGenres } from "@/app/reader/types"
 type ReaderToolbarProps = {
 	disabled?: boolean
 	onGenreSelect: (genre: string) => void

@@ -19,8 +19,19 @@ export interface AudioPayload {
 	chunk: string
 }
 export interface ImagePayload {
-	urls: string[]
+	urls: Array<string>
 }
 export interface ErrorPayload {
 	error: string
+}
+
+export const storyGenres = {
+	magic: "Magical Wizardry",
+	scifi: "Science Fiction",
+	swords: "Sword & Sorcery",
+	romance: "Romance Novel",
+	drama: "Classic Drama",
+	apocalypse: "Apocalypse Now",
+	hollywood: "Hollywood Action",
+	singularity: "The Singularity",
 }

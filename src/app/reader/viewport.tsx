@@ -4,12 +4,11 @@ import type { DefaultSession } from "next-auth"
 import type { PropsWithChildren } from "react"
 import React, { useState, useEffect } from "react"
 import useWebSocket, { ReadyState } from "react-use-websocket"
-import type { storyGenres } from "@/app/components/toolbar/story-genre"
+import { storyGenres } from "@/app/reader/types"
 import ReaderToolbar from "@/app/components/toolbar/toolbar"
-import PromptInput from "@/app/components/prompt/input"
-import { Badge, Spinner } from "@radix-ui/themes"
-
-const WEBSOCK_URL = process.env.NEXT_PUBLIC_WEBSOCK_URL ?? "ws://localhost:3001"
+import PromptInput from "@/app/components/prompt-input"
+import ImageViewer from "@/app/components/image-viewer"
+import { Badge, Callout, Spinner } from "@radix-ui/themes"
 import type {
 	ServerMessage,
 	StatePayload,
