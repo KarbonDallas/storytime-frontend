@@ -2,7 +2,7 @@ import { Root } from "@radix-ui/react-label"
 import type { PropsWithChildren } from "react"
 
 type PromptLabelProps = {
-	defaultPrompt: string
+	value: string
 	onChange: (prompt: string) => void
 } & PropsWithChildren
 
@@ -20,7 +20,7 @@ export default function PromptLabel(props: PromptLabelProps) {
 				type="text"
 				id="promptInput"
 				onChange={changeHandler}
-				defaultValue={props.defaultPrompt}
+				value={props.value}
 			/>
 		</div>
 	)
