@@ -18,7 +18,6 @@ import type {
 	ErrorPayload,
 } from "@/app/reader/types"
 import { Frown } from "lucide-react"
-import { url } from "inspector"
 
 const WEBSOCK_URL = process.env.NEXT_PUBLIC_WEBSOCK_URL ?? "ws://localhost:3001"
 type ReaderViewportProps = {
