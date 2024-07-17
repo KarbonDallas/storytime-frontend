@@ -49,11 +49,25 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 	const [userHasTyped, setUserHasTyped] = useState(false)
 	const [errorMessage, setErrorMessage] = useState("")
 	const [showCarousel, setShowCarousel] = useState(false)
+	const [connectionEstablished, setConnectionEstablished] = useState(false)
 	const { sendJsonMessage, lastMessage, readyState } = useWebSocket(
 		WEBSOCK_URL,
 		{
-			onOpen: () => console.log("Connection opened"),
-			onClose: () => console.log("Connection closed"),
+			onOpen: () => {
+				console.log("Connection opened")
+				setConnectionEstablished(true)
+			},
+			onClose: () => {
+				console.log("Connection closed")
+			},
+			onError: () => {
+				if (connectionEstablished) {
+					setConnectionEstablished(false)
+					setIsStreaming(false)
+					setErrorMessage("Disconnected from story machine.")
+					clearError()
+				}
+			},
 			shouldReconnect: (_closeEvent) => true,
 		},
 	)
@@ -149,8 +163,8 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 					</Badge>
 				</div>
 			</div>
-			<div className={errorMessage ? "flex" : "hidden"}>
-				<Callout.Root size="1">
+			<div className={errorMessage ? "opacity-90" : "opacity-0"}>
+				<Callout.Root size="1" color="orange">
 					<Callout.Icon>
 						<Frown />
 					</Callout.Icon>
