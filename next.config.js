@@ -14,6 +14,12 @@ const config = {
 				port: "",
 				pathname: "/stream/**",
 			},
+			{
+				protocol: "https",
+				hostname: "**.xode.app",
+				port: "",
+				pathname: "/livepeer-cloud-ai-images/**",
+			},
 		],
 	},
 }
