@@ -149,9 +149,6 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 					</Badge>
 				</div>
 			</div>
-			<div className={isStreaming ? "opacity-90" : "opacity-0"}>
-				<Spinner size="3" className="mt-3" />
-			</div>
 			<div className={errorMessage ? "flex" : "hidden"}>
 				<Callout.Root size="1">
 					<Callout.Icon>
@@ -162,14 +159,20 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 			</div>
 			<PromptInput onChange={onPromptUpdate} value={prompt} />
 			<div className="w-max items-center justify-center">
+				<div className="w-[500px] whitespace-pre-wrap px-12 pb-20 pt-4 text-justify font-medium">
+					{story}
+				</div>
+
 				<div
-					className={`flex h-[320px] items-center justify-center ${showCarousel ? "block" : "hidden"}`}
+					className={`flex h-[320px] items-center justify-center pb-20 ${showCarousel ? "block" : "hidden"}`}
 				>
 					<ImageViewer images={images.urls} />
 				</div>
-				<div className="w-[500px] whitespace-pre-wrap px-12 pb-44 pt-4 text-justify font-medium">
-					{story}
-				</div>
+			</div>
+			<div
+				className={`grid items-center justify-center pb-20 ${isStreaming ? "opacity-90" : "opacity-0"}`}
+			>
+				<Spinner size="3" className="mt-3" />
 			</div>
 		</div>
 	)
