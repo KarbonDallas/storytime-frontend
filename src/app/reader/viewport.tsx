@@ -84,6 +84,7 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 		if (isStreaming) return
 		setStory("")
 		setImages(defaultImages)
+		setShowCarousel(false)
 		setIsStreaming(true)
 		sendJsonMessage({ type: "request", payload: { genre, prompt } })
 	}
@@ -105,13 +106,16 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 			if (data.type === "text") {
 				const payload = data.payload as TextPayload
 				setStory((prev) => prev + payload.delta)
-				if (!showCarousel) setShowCarousel(true)
+				// if (!showCarousel) setShowCarousel(true)
 			}
 			if (data.type === "state") {
 				const payload = data.payload as StatePayload
 			}
 			if (data.type === "image") {
 				const payload = data.payload as ImagePayload
+				if (payload.urls.length > 0) {
+					setShowCarousel(true)
+				}
 				setImages(payload)
 				setIsStreaming(false)
 			}
@@ -124,7 +128,7 @@ export default function ReaderViewport(props: ReaderViewportProps) {
 				clearError()
 			}
 		}
-	}, [lastMessage, showCarousel, defaultPrompt])
+	}, [lastMessage, defaultPrompt])
 
 	return (
 		<div className="flex h-max flex-col items-center">
