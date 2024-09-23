@@ -16,7 +16,7 @@ const config = {
 			},
 			{
 				protocol: "https",
-				hostname: "**.xode.app",
+				hostname: "obj-store.livepeer.cloud",
 				port: "",
 				pathname: "/livepeer-cloud-ai-images/**",
 			},
